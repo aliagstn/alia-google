@@ -4,6 +4,7 @@ import { TbLoader } from "react-icons/tb";
 import CardResults from "../components/CardResults";
 import axios from "axios";
 import ReactPaginate from "react-paginate";
+// import 'dotenv/config'
 
 export default function SearchResults() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -14,12 +15,13 @@ export default function SearchResults() {
     try {
       let query = searchParams.get("search");
       let page = +searchParams.get("page") * 10;
+      console.log(process.env.REACT_APP_RAPID_API_KEY, "<<key")
       let response = await axios({
         method: "GET",
         url: `https://google-search3.p.rapidapi.com/api/v1/search/q=${query}&num=10&start=${page}`,
         headers: {
           "X-RapidAPI-Key":
-            "85b8e54450msh5d92cc2cdcbddf4p148241jsn36440a14b7a9",
+            `${process.env.REACT_APP_RAPID_API_KEY}`,
           "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
           "X-Proxy-Location": "ID",
         },
