@@ -1,0 +1,119 @@
+.App {
+  text-align: center;
+}
+
+/* .App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} */
+
+.App-header {
+  /* background-color: #282c34; */
+  min-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  /* color: white; */
+}
+
+#googlia {
+  font-family: sans-serif;
+}
+
+#navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+/* .container-home {
+  display: flex;
+  flex-direction: column;
+} */
+
+.nav-buttons {
+  margin-right: 100;
+}
+
+.navbar-search-results {
+  display: flex;
+  flex-direction: row;
+  text-align: center;
+  align-items: center;
+  
+}
+
+@keyframes loading-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .loading {
+    animation: loading-spin infinite 10s linear;
+  }
+}
+
+.results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 20;
+}
+
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+  font-size: 10;
+  gap: 5px;
+}
+
+.pagination .page-num {
+  padding: 8px 15px;
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+
+.pagination .page-num:hover{
+  background-color: blue;
+  color: white;
+}
+
+.pagination .active {
+  background-color: blue;
+  color: white;
+}
+
+.footer-pagination {
+  margin-top: 100px;
+  margin-bottom: 0;
+}
