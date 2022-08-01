@@ -12,10 +12,9 @@ export default function CardImage({ image }) {
     <div className="image">
         <img src={image.image.src} alt={image.image.alt} />
         <div className="overlay">
-          <p style={{color:'white',marginTop:'20%'}}>{displayTitle}</p>
-          <hr />
+          <p style={{color:'white'}}>{displayTitle}</p>
           <a href={image.link.href}>
-            <button style={{cursor:'pointer'}}>go to page</button>
+            <button style={{cursor:'pointer'}}>Visit</button>
           </a>
         </div>
     </div>

@@ -42,7 +42,7 @@ export default function ImageResults() {
   };
 
   return (
-    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden' }}>
+    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden',marginRight:'0px' }}>
       <div style={{position:'absolute',zIndex:100,width:'100vw'}}>
         <div className="navbar-search-results">
           <div>

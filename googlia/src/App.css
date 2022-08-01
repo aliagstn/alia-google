@@ -206,7 +206,7 @@
     background-color: transparent;
     outline: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: medium;
+    font-size: large;
   }
   
   .card-results{
@@ -228,7 +228,7 @@
     background-color: transparent;
     outline: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: medium;
+    font-size: large;
   }
   
   .card-results{
@@ -267,7 +267,7 @@
     background-color: transparent;
     outline: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: medium;
+    font-size: large;
   }
   
   .card-results{
@@ -307,7 +307,46 @@
     background-color: transparent;
     outline: none;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-size: medium;
+    font-size: large;
+  }
+  
+  .card-results{
+    margin-right: 5%;
+    margin-left: 50px;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width:650px) {
+  .navbar-search-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-left: auto;
+    margin-top: 10px;
+  }
+  
+  .navbar-search-results h2 {
+    font-size: 25px;
+    margin: 5px 0px;
+    margin-bottom: 0px;
+  }
+
+  .nav-search{
+    height: 30px;
+    width: 400px;
+    margin-bottom: 20px;
+  }
+  
+  .search-input{
+    border: none;
+    width: 350px;
+    background-color: transparent;
+    outline: none;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: large;
   }
   
   .card-results{
@@ -320,7 +359,7 @@
 
 .images {
   width: 1200px;
-  margin: 20px auto;
+  margin: 10px auto;
   columns: 5;
   column-gap: 4px;
 }
@@ -358,35 +397,28 @@
   border-radius: 10%;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.overlay button{
+  background-color: #f0cfc6;
+  border: none;
+  border-radius: 20px;
+  height: 30px;
+  width: 70px;
 }
 
 .image:hover .overlay {
   opacity: 0.8;
 }
 
-@media  (min-width: 1000px) {
+@media screen and (min-width: 1005px) and (max-width:1220px) {
   .images {
-    width: 1200px;
-    margin: 20px auto;
-    columns: 5;
-    column-gap: 4px;
-  }
-}
-
-@media (min-width: 540px) and (max-width: 1000px) {
-  .images {
-    width: 1200px;
+    width: 1000px;
     margin: 20px auto;
     columns: 4;
-    column-gap: 4px;
-  }
-}
-
-@media only screen and (max-width: 540px) {
-  .images {
-    width: 1200px;
-    margin: 2px auto;
-    columns: 2;
     column-gap: 4px;
   }
   .image {
@@ -400,6 +432,131 @@
 
   .image img {
     width: 250px;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10%;
+  }
+}
+@media (min-width: 900px) and (max-width: 1005px) {
+  .images {
+    width: 90vw;
+    margin: 10px auto;
+    columns: 4;
+    column-gap: 4px;
+  }
+  
+  .image {
+    width: 200px;
+    margin: 1 1 2px;
+    padding: 5;
+    overflow: hidden;
+    break-inside: avoid;
+    border-radius: 15;
+    position: relative;
+  }
+  
+  .image img {
+    width: 200px;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 15;
+  }
+}
+
+@media (min-width: 800px) and (max-width: 900px) {
+  .images {
+    width: 95vw;
+    margin: 10px auto;
+    columns: 3;
+    column-gap: 4px;
+  }
+  
+  .image {
+    width: 250px;
+    margin: 1 1 2px;
+    padding: 5;
+    overflow: hidden;
+    break-inside: avoid;
+    border-radius: 15;
+    position: relative;
+  }
+  
+  .image img {
+    width: 250px;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10%;
+  }
+}
+@media (min-width: 670px) and (max-width: 800px) {
+  .images {
+    width: 90vw;
+    margin: 10px auto;
+    columns: 3;
+    column-gap: 4px;
+  }
+  
+  .image {
+    width: 200px;
+    margin: 1 1 2px;
+    padding: 5;
+    overflow: hidden;
+    break-inside: avoid;
+    border-radius: 15;
+    position: relative;
+  }
+  
+  .image img {
+    width: 200px;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10%;
+  }
+}
+@media (min-width: 540px) and (max-width: 670px) {
+  .images {
+    width: 80vw;
+    margin: 10px auto;
+    columns: 3;
+    column-gap: 4px;
+  }
+  
+  .image {
+    width: 150px;
+    margin: 1 1 2px;
+    padding: 5;
+    overflow: hidden;
+    break-inside: avoid;
+    border-radius: 15;
+    position: relative;
+  }
+  
+  .image img {
+    width: 150px;
+    max-height: 100%;
+    object-fit: cover;
+    border-radius: 10%;
+  }
+}
+
+@media screen and (max-width: 540px) and (min-width:200px) {
+  .images {
+    width: 80vw;
+    margin: 2px auto;
+    columns: 2;
+    column-gap: 4px;
+  }
+  .image {
+    width: 200px;
+    margin: 1 1 2px;
+    padding: 5;
+    overflow: hidden;
+    break-inside: avoid;
+    border-radius: 15;
+  }
+
+  .image img {
+    width: 200px;
     max-height: 100%;
     object-fit: cover;
     border-radius: 10%;
