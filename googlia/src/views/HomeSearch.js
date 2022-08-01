@@ -44,7 +44,7 @@ export default function HomeSearch() {
   };
   return (
     <div style={{height:'100vh',overflow:'hidden'}}>
-      <div >
+      <div>
         <nav id="navbar">
           <h4
             onClick={toSetDefaultSearch}
@@ -79,7 +79,7 @@ export default function HomeSearch() {
           </h1>
         )}
         <form className="form-search">
-          <BiSearchAlt color="" size={30} style={{ margin: "5px" }} />
+          <BiSearchAlt color="#bbb1a6" size={30} style={{ margin: "5px" }} />
           <input
             type="text"
             name="search"

@@ -3,6 +3,7 @@ import { useSearchParams } from "react-router-dom";
 import axios from "axios";
 import CardImage from "../components/CardImage";
 import { TbLoader } from "react-icons/tb";
+import { BsSearch } from "react-icons/bs";
 
 export default function ImageResults() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -41,41 +42,43 @@ export default function ImageResults() {
   };
 
   return (
-    <div>
-      <div className="navbar-search-results">
-        <div style={{ marginLeft: 50 }}>
-          <h2>googlia</h2>
+    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden' }}>
+      <div style={{position:'absolute',zIndex:100,width:'100vw'}}>
+        <div className="navbar-search-results">
+          <div>
+            <h2 style={{ color: "#dcb1b3" }}>googlia</h2>
+          </div>
+          <form className="form-search nav-search">
+            <BsSearch color="#bbb1a6" size={20} style={{ margin: "5px" }} />
+            <input
+              type="text"
+              onChange={(e) => setInputSearch(e.target.value)}
+              defaultValue={searchParams.get("search")}
+              className="search-input"
+            />
+            <input
+              type="submit"
+              onClick={toSearch}
+              style={{ display: "none" }}
+            />
+          </form>
         </div>
-        <div
-          style={{
-            marginLeft: 70,
-            border: 1,
-            height: 25,
-            backgroundColor: "pink",
-            width: 500,
-            borderRadius: 20,
-          }}
-        >
-          <input
-            type="text"
-            onChange={(e) => setInputSearch(e.target.value)}
-            defaultValue={searchParams.get("search")}
-            style={{ border: "none", width: 400 }}
-          />
-          <button onClick={toSearch}>search</button>
-        </div>
+        <hr />
       </div>
-      <hr />
-      <div style={{display:'flex'}}>
-      {isLoading ? (
-          <TbLoader className="loading" size={300} />
+      <div className="results" >
+        {isLoading ? (
+          <div className="loading-container">
+            <TbLoader className="loading" size={100} />
+          </div>
         ) : (
+          <div style={{marginTop:'100px'}}>
           <div className="images">
             {
               searchResults?.map((image, i) => {
                  return <CardImage image={image} key={i} />
               })
             }            
+          </div>
           </div>
         )}
       </div>

@@ -8,18 +8,20 @@ export default function AdditionalLinks({ result }) {
             let indexLink = result.text.indexOf("http")
             let text = result.text.slice(0,+indexLink)
             let link = result.text.slice(+indexLink)
-            setDisplayText(text)
-            setDisplayLink(link)
+            if(text.length > 3 && link.length > 3){
+              setDisplayText(text)
+              setDisplayLink(link)
+            }
         }
     },[result])
 
   return (
-    <div style={{margin:5,color:'black'}}>
+    <div className="additional-links">
       {displayText && (
         <>
-          <a href={result.href} style={{textDecoration:'none'}}>
-            <p style={{fontSize:12,opacity:0.7,margin:0,color:'black'}}>{displayLink}</p>
-            <h5 style={{margin:0}}>{displayText}</h5>
+          <a href={result.href}>
+            <p>{displayLink}</p>
+            <h5 style={{margin:0,color:"#697184"}}>{displayText}</h5>
           </a>
         </>
       )}

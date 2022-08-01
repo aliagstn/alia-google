@@ -3,12 +3,15 @@ import { useSearchParams } from "react-router-dom";
 import { TbLoader } from "react-icons/tb";
 import CardResults from "../components/CardResults";
 import axios from "axios";
+import { BsSearch } from "react-icons/bs";
+import { GrPrevious, GrNext } from "react-icons/gr";
 
 export default function SearchResults() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [inputSearch, setInputSearch] = useState("");
   const [isLoading, setIsLoading] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
+  const [pages, setPages] = useState([]);
   const gettingResults = useCallback(async () => {
     try {
       let query = searchParams.get("search");
@@ -17,8 +20,7 @@ export default function SearchResults() {
         method: "GET",
         url: `https://google-search3.p.rapidapi.com/api/v1/search/q=${query}&num=10&start=${page}`,
         headers: {
-          "X-RapidAPI-Key":
-            `${process.env.REACT_APP_KEY}`,
+          "X-RapidAPI-Key": `${process.env.REACT_APP_KEY}`,
           "X-RapidAPI-Host": "google-search3.p.rapidapi.com",
           "X-Proxy-Location": "ID",
         },
@@ -26,6 +28,8 @@ export default function SearchResults() {
       if (response.data.results) {
         setSearchResults(response.data.results);
       }
+      let currentPage = searchParams.get("page");
+      setPages([currentPage, +currentPage + 1, +currentPage + 2]);
     } catch (error) {
       console.log(error);
     } finally {
@@ -37,70 +41,94 @@ export default function SearchResults() {
     gettingResults();
   }, [gettingResults]);
 
-  const toSearch = () => {
+  const toSearch = (e) => {
+    e.preventDefault();
     setIsLoading(true);
     setSearchParams({ search: inputSearch, page: 1 });
   };
 
-  // const handlePageClick = (data) => {
-  //   setIsLoading(true);
-  //   setSearchParams({
-  //     search: searchParams.get("search"),
-  //     page: +data.selected + 1,
-  //   });
-  // };
+  const handlePageClick = (data) => {
+    setIsLoading(true);
+    setSearchParams({
+      search: searchParams.get("search"),
+      page: +data,
+    });
+  };
+  const handleNextPage = () => {
+    setIsLoading(true);
+    setSearchParams({
+      search: searchParams.get("search"),
+      page: +searchParams.get("page") + 1,
+    });
+  };
+  const handlePreviousPage = () => {
+    setIsLoading(true);
+    setSearchParams({
+      search: searchParams.get("search"),
+      page: +searchParams.get("page") - 1,
+    });
+  };
   return (
-    <div>
-      <div className="navbar-search-results">
-        <div style={{ marginLeft: 50 }}>
-          <h2>googlia</h2>
+    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden' }}>
+      <div style={{position:'absolute',zIndex:100,width:'100vw'}}>
+        <div className="navbar-search-results">
+          <div>
+            <h2 style={{ color: "#dcb1b3" }}>googlia</h2>
+          </div>
+          <form className="form-search nav-search">
+            <BsSearch color="#bbb1a6" size={20} style={{ margin: "5px" }} />
+            <input
+              type="text"
+              onChange={(e) => setInputSearch(e.target.value)}
+              defaultValue={searchParams.get("search")}
+              className="search-input"
+            />
+            <input
+              type="submit"
+              onClick={toSearch}
+              style={{ display: "none" }}
+            />
+          </form>
         </div>
-        <div
-          style={{
-            marginLeft: 70,
-            border: 1,
-            height: 25,
-            backgroundColor: "pink",
-            width: 500,
-            borderRadius: 20,
-          }}
-        >
-          <input
-            type="text"
-            onChange={(e) => setInputSearch(e.target.value)}
-            defaultValue={searchParams.get("search")}
-            style={{ border: "none", width: 400 }}
-          />
-          <button onClick={toSearch}>search</button>
-        </div>
+        <hr />
       </div>
-      <hr />
-      <div className="results">
+      <div className="results" >
         {isLoading ? (
-          <TbLoader className="loading" size={300} />
+          <div className="loading-container">
+            <TbLoader className="loading" size={100} />
+          </div>
         ) : (
-          <>
+          <div style={{marginTop:'100px'}}>
             {searchResults?.map((result, i) => {
               return <CardResults result={result} key={i} />;
             })}
-            {/* <nav className="footer-pagination">
-              <ReactPaginate
-                breakLabel="..."
-                nextLabel="next >"
-                onPageChange={handlePageClick}
-                pageRangeDisplayed={5}
-                pageCount={30}
-                previousLabel="< previous"
-                renderOnZeroPageCount={null}
-                containerClassName="pagination"
-                pageLinkClassName="page-num"
-                previousLinkClassName="page-num"
-                nextLinkClassName="page-num"
-                activeLinkClassName="active"
-                forcePage={searchParams.get("page")}
-              />
-            </nav> */}
-          </>
+            <div className="pagination">
+              {+pages[0] !== 1 && (
+                <GrPrevious
+                  onClick={handlePreviousPage}
+                  style={{ cursor: "pointer" }}
+                />
+              )}
+              <>
+                {pages.map((page, i) => {
+                  return (
+                    <p
+                      key={i}
+                      className={
+                        searchParams.get("page") === page
+                          ? "currentpage"
+                          : undefined
+                      }
+                      onClick={() => handlePageClick(page)}
+                    >
+                      {page}
+                    </p>
+                  );
+                })}
+              </>
+              <GrNext onClick={handleNextPage} style={{ cursor: "pointer" }} />
+            </div>
+          </div>
         )}
       </div>
     </div>
