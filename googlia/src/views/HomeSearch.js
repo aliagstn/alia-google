@@ -43,46 +43,56 @@ export default function HomeSearch() {
     }
   };
   return (
-    <div className="container-home">
-      <nav id="navbar">
-        <div>
-          <button style={{ margin: 20 }} onClick={toSetDefaultSearch}>
-            googlia
-          </button>
-        </div>
-        <div>
-          <button style={{ margin: 20 }} onClick={toSetImageSearch}>
-            images
-          </button>
-          <button style={{ margin: 20 }} onClick={toSetNewsSearch}>
-            news
-          </button>
-        </div>
-      </nav>
-      <div className="App-header">
-        {defaultSearch && <h1 id="googlia">googlia</h1>}
+    <div style={{height:'100vh',overflow:'hidden'}}>
+      <div >
+        <nav id="navbar">
+          <h4
+            onClick={toSetDefaultSearch}
+            className={defaultSearch ? "nav-clicked" : undefined}
+          >
+            All
+          </h4>
+          <h4
+            onClick={toSetImageSearch}
+            className={imageSearch ? "nav-clicked" : undefined}
+          >
+            Image
+          </h4>
+          <h4
+            onClick={toSetNewsSearch}
+            className={newsSearch ? "nav-clicked" : undefined}
+          >
+            News
+          </h4>
+        </nav>
+      </div>
+      <section className="App-header">
+        {defaultSearch && <h1 className="googlia">googlia</h1>}
         {imageSearch && (
-          <h1 id="googlia">
+          <h1 className="googlia">
             googlia <small style={{ fontSize: 20 }}>images</small>
           </h1>
         )}
         {newsSearch && (
-          <h1 id="googlia">
+          <h1 className="googlia">
             googlia <small style={{ fontSize: 20 }}>news</small>
           </h1>
         )}
-        <div>
+        <form className="form-search">
+          <BiSearchAlt color="" size={30} style={{ margin: "5px" }} />
           <input
             type="text"
             name="search"
-            id=""
+            className="search-input-home"
             onChange={(e) => setSearchInput(e.target.value)}
           />
-          <button onClick={toSearch}>
-            <BiSearchAlt color="" />
-          </button>
-        </div>
-      </div>
+          <input
+            type="submit"
+            onClick={toSearch}
+            style={{ display: "none" }}
+          ></input>
+        </form>
+      </section>
     </div>
   );
 }
