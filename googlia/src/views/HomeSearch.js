@@ -29,6 +29,12 @@ export default function HomeSearch() {
                 search: `?${createSearchParams({search:searhInput,page:1})}`
             })
         }
+        if(imageSearch){
+          navigate({
+              pathname: "/images",
+              search: `?${createSearchParams({search:searhInput})}`
+          })
+      }
     }
   return (
     <div className="container-home">

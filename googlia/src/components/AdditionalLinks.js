@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
 export default function AdditionalLinks({ result }) {
     const [displayText, setDisplayText] = useState("")
@@ -18,10 +17,10 @@ export default function AdditionalLinks({ result }) {
     <div style={{margin:5,color:'black'}}>
       {displayText && (
         <>
-          <Link to={result.href} style={{textDecoration:'none'}}>
+          <a href={result.href} style={{textDecoration:'none'}}>
             <p style={{fontSize:12,opacity:0.7,margin:0,color:'black'}}>{displayLink}</p>
             <h5 style={{margin:0}}>{displayText}</h5>
-          </Link>
+          </a>
         </>
       )}
     </div>
