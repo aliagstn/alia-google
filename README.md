@@ -1,7 +1,7 @@
 # G O O G L I A
 
 ## About Googlia
-> Googlia is a serach engine client-only application that has 3 features: searching all related data, searching all related images, and searching all related news.
+> Googlia is a search engine client-only application that has 3 features: searching all related data, searching all related images, and searching all related news.
 
 ## Tech Stacks Used
 > - react.js
