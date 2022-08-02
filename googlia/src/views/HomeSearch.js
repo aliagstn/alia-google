@@ -79,7 +79,7 @@ export default function HomeSearch() {
           </h1>
         )}
         <form className="form-search">
-          <BiSearchAlt color="#bbb1a6" size={5} style={{ margin: "0px" }} />
+          <BiSearchAlt color="#bbb1a6" size={40} style={{ margin: "0px" }} />
           <input
             type="text"
             name="search"

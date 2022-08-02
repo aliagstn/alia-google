@@ -36,13 +36,14 @@ export default function ImageResults() {
     gettingResults();
   }, [gettingResults]);
 
-  const toSearch = () => {
+  const toSearch = (e) => {
+    e.preventDefault()
     setIsLoading(true);
     setSearchParams({ search: inputSearch });
   };
 
   return (
-    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden',marginRight:'0px' }}>
+    <div style={{ backgroundColor: "#F2E6D5",overflowX:'hidden',marginRight:'0px' }}>
       <div style={{position:'absolute',zIndex:100,width:'100vw'}}>
         <div className="navbar-search-results">
           <div>

@@ -4,6 +4,7 @@ import { TbLoader } from "react-icons/tb";
 import axios from "axios";
 import CardNews from "../components/CardNews";
 import { Bookmark } from "../Context";
+import { BsSearch } from "react-icons/bs";
 
 export default function NewsResults() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -11,7 +12,9 @@ export default function NewsResults() {
   const [isLoading, setIsLoading] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
   const [topSearch, setTopSearch] = useState(true);
+  // eslint-disable-next-line
   const [context, setContext] = useContext(Bookmark)
+  
   const gettingResults = useCallback(async () => {
     try {
       let query = searchParams.get("search");
@@ -43,29 +46,28 @@ export default function NewsResults() {
     setSearchParams({ search: inputSearch });
   };
   return (
-    <div>
-      <div className="navbar-search-results">
-        <div style={{ marginLeft: 50 }}>
-          <h2>googlia</h2>
+    <div style={{ backgroundColor: "#F2E6D5",overflowX:'hidden',marginRight:'0px' }}>
+      <div style={{position:'relative',zIndex:100,width:'100vw'}}>
+        <div className="navbar-search-results">
+          <div>
+            <h2 style={{ color: "#dcb1b3" }}>googlia</h2>
+          </div>
+          <form className="form-search nav-search">
+            <BsSearch color="#bbb1a6" size={20} style={{ margin: "5px" }} />
+            <input
+              type="text"
+              onChange={(e) => setInputSearch(e.target.value)}
+              defaultValue={searchParams.get("search")}
+              className="search-input"
+            />
+            <input
+              type="submit"
+              onClick={toSearch}
+              style={{ display: "none" }}
+            />
+          </form>
         </div>
-        <div
-          style={{
-            marginLeft: 70,
-            border: 1,
-            height: 25,
-            backgroundColor: "pink",
-            width: 500,
-            borderRadius: 20,
-          }}
-        >
-          <input
-            type="text"
-            onChange={(e) => setInputSearch(e.target.value)}
-            defaultValue={searchParams.get("search")}
-            style={{ border: "none", width: 400 }}
-          />
-          <button onClick={toSearch}>search</button>
-        </div>
+        <hr style={{display:'none'}} />
       </div>
       <div className="content-news">
         <div className="navbar-news">
@@ -84,7 +86,9 @@ export default function NewsResults() {
         </div>
         <div className="news">
           {isLoading ? (
-            <TbLoader className="loading" size={300} />
+            <div className="loading-container">
+            <TbLoader className="loading" size={100} />
+          </div>
           ) : (
             <>
               {topSearch ? (

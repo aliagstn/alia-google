@@ -58,7 +58,7 @@
   outline: none;
   margin: 5px;
   font-size: medium;
-  background-color: transparent;
+  background-color: #F2E6D5;
   color:#bbb1a6 ;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
@@ -247,6 +247,7 @@
     gap: 10px;
     margin-left: auto;
     margin-top: 10px;
+    margin-bottom: 10px;
   }
   
   .navbar-search-results h2 {
@@ -564,8 +565,8 @@
 }
 
 .content-news{
-  display: flex;
-  flex-direction: column;
+  height: calc(100vh - 90px);
+  margin-top: 20px;
 }
 
 .navbar-news{
@@ -576,19 +577,19 @@
 .navbar-news-h2{
   font-size: 15px;
   margin: 0;
-  background-color: palevioletred;
+  background-color: #bbb1a6;
   width: 50%;
   cursor: pointer;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  height: 30px;
-  line-height: 200%;
-  border-bottom: solid;
+  height: 35px;
+  line-height: 250%;
+  color: #F2E6D5 ;
 }
 .h2-clicked{
   font-size: 15px;
   margin: 0;
-  background-color: white;
+  background-color: transparent;
   width: 50%;
   cursor: pointer;
   border-top-left-radius: 15px;
@@ -598,19 +599,24 @@
   border-left: solid;
   height: 30px;
   line-height: 200%;
+  border-color: #bbb1a6;
+  color: #bbb1a6 ;
 }
 .news{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
+  margin-top: 10px;
+  background-color: transparent;
 }
 .a-news{
   background-color: rgba(243, 236, 236, 0.7);
-  width: 70%;
+  width: 80%;
   margin: 5px;
   border-radius: 20px;
+  color: #697184;
+  padding-bottom: 20px;
 }
 .buttons-on-news{
   opacity: 0;
@@ -621,4 +627,59 @@
 }
 .a-news:hover .buttons-on-news{
   opacity: 0.7;
+}
+.a-news p{
+  margin-left: 5px;
+  text-align: left;
+}
+.news-attributes{
+  font-size: medium;
+  padding-left: 20px;
+}
+.a-news h2{
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.summary {
+  text-decoration: none;
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 15px;
+}
+.summary button{
+  border: none;
+  background-color: #b7ad9f;
+  border-radius: 15px;
+  cursor: pointer;
+  height: 40px;
+  width: 100px;
+  color: #f0e8d6;
+}
+
+.tool {
+  position: relative;
+}
+
+.tool::after {
+  content: attr(data-tip);
+  padding: 8px;
+  border-radius: 4px;
+  position: absolute;
+  color: white;
+  top: 115%;
+  right: 50%;
+  left: 50%;
+  width: max-content;
+  background-color: gray;
+  opacity: 0;
+  font-size: 0.8rem;
+  visibility: hidden;
+  transform: translate(-50%, 18px) scale(0.8);
+  transition: visibility, opacity, transform 200ms;
+}
+
+.tool:hover::after {
+  visibility: visible;
+  opacity: 1;
+  transform: translate(-50%, 0);
 }

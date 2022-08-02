@@ -69,7 +69,7 @@ export default function SearchResults() {
     });
   };
   return (
-    <div style={{ backgroundColor: "#fbfbfb",overflowX:'hidden' }}>
+    <div style={{ backgroundColor: "#F2E6D5",overflowX:'hidden' }}>
       <div style={{position:'absolute',zIndex:100,width:'100vw'}}>
         <div className="navbar-search-results">
           <div>
