@@ -15,7 +15,7 @@
 > - 3rd Party I used for getting google results data: https://rapidapi.com/apigeek/api/google-search3
 
 ## Timeline Project
->       Sunday, 31st of July 2022 - Monday, 1st of August 2022: Making raw template and wiring with server 
+>       Monday, 1st of August 2022: Making raw template and wiring with server 
 >       Monday, 1st of August 2022 - Tuesday, 2nd of August 2022: Styling, Adding Related Components, Exploring React Testing Library
 
 
