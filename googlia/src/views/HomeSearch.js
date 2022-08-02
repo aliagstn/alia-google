@@ -22,7 +22,8 @@ export default function HomeSearch() {
     setImageSearch(false);
     setDefaultSearch(true);
   };
-  const toSearch = () => {
+  const toSearch = (e) => {
+    e.preventDefault()
     if (defaultSearch) {
       navigate({
         pathname: "/search",
@@ -78,10 +79,10 @@ export default function HomeSearch() {
             googlia <small style={{ fontSize: 20 }}>news</small>
           </h1>
         )}
-        <form className="form-search">
+        <form className="form-search" action=".">
           <BiSearchAlt color="#bbb1a6" size={40} style={{ margin: "0px" }} />
           <input
-            type="text"
+            type="search"
             name="search"
             className="search-input-home"
             onChange={(e) => setSearchInput(e.target.value)}

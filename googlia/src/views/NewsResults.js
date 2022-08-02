@@ -41,7 +41,8 @@ export default function NewsResults() {
     gettingResults();
   }, [gettingResults, context]);
 
-  const toSearch = () => {
+  const toSearch = (e) => {
+    e.preventDefault()
     setIsLoading(true);
     setSearchParams({ search: inputSearch });
   };
@@ -52,10 +53,10 @@ export default function NewsResults() {
           <div>
             <h2 style={{ color: "#dcb1b3" }}>googlia</h2>
           </div>
-          <form className="form-search nav-search">
+          <form className="form-search nav-search" action=".">
             <BsSearch color="#bbb1a6" size={20} style={{ margin: "5px" }} />
             <input
-              type="text"
+              type="search"
               onChange={(e) => setInputSearch(e.target.value)}
               defaultValue={searchParams.get("search")}
               className="search-input"
