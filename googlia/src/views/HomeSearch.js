@@ -83,12 +83,14 @@ export default function HomeSearch() {
           <BiSearchAlt color="#bbb1a6" size={40} style={{ margin: "0px" }} />
           <input
             type="search"
+            aria-label="search"
             name="search"
             className="search-input-home"
             onChange={(e) => setSearchInput(e.target.value)}
           />
           <input
             type="submit"
+            aria-label="submit"
             onClick={toSearch}
             style={{ display: "none" }}
           ></input>
